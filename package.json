@@ -2,10 +2,10 @@
   "name": "travel-booking-application",
   "version": "1.0.0",
   "description": "A Node.js application for booking travel services",
-  "main": "src/app.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "test": "jest --coverage",
     "lint": "eslint .",
     "seed": "node src/config/seedData.js"
