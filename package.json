@@ -1,0 +1,54 @@
+{
+  "name": "travel-booking-application",
+  "version": "1.0.0",
+  "description": "A Node.js application for booking travel services",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest --coverage",
+    "lint": "eslint .",
+    "seed": "node src/config/seedData.js"
+  },
+  "keywords": [
+    "travel",
+    "booking",
+    "nodejs",
+    "express",
+    "mongodb"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "jsonwebtoken": "^9.0.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "helmet": "^7.0.0",
+    "express-validator": "^7.0.1",
+    "morgan": "^1.10.0",
+    "winston": "^3.10.0",
+    "moment": "^2.29.4",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.0",
+    "stripe": "^13.2.0",
+    "nodemailer": "^6.9.4",
+    "compression": "^1.7.4",
+    "express-rate-limit": "^6.9.0",
+    "cookie-parser": "^1.4.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.6.2",
+    "supertest": "^6.3.3",
+    "eslint": "^8.47.0",
+    "prettier": "^3.0.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
