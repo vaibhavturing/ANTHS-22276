@@ -27,13 +27,15 @@ app.get('/api/status', (req, res) => {
 // Connect to database and start server
 const startServer = async () => {
   try {
+    console.log(`[${new Date().toLocaleString()}] Attempting to connect to database...`);
     await connectDB();
+    console.log(`[${new Date().toLocaleString()}] MongoDB Connected successfully`);
     
     app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+      console.log(`[${new Date().toLocaleString()}] Server is running on port ${PORT}`);
     });
   } catch (error) {
-    console.error(`Failed to start server: ${error.message}`);
+    console.error(`[${new Date().toLocaleString()}] Failed to start server: ${error.message}`);
     process.exit(1);
   }
 };
