@@ -4,6 +4,8 @@
  */
 const express = require('express');
 const router = express.Router();
+const validateRequest = require('../middleware/validate.middleware');
+const { userSchemas } = require('../utils/validation');
 
 // Test route for authentication
 router.get('/test', (req, res) => {
@@ -13,21 +15,27 @@ router.get('/test', (req, res) => {
   });
 });
 
-// Placeholder for registration route
-router.post('/register', (req, res) => {
-  res.status(200).json({ 
-    message: 'Registration endpoint placeholder',
-    data: req.body
-  });
-});
+// Registration route with validation
+router.post('/register', 
+  validateRequest(userSchemas.register),
+  (req, res) => {
+    res.status(200).json({ 
+      message: 'Registration endpoint placeholder',
+      data: req.body
+    });
+  }
+);
 
-// Placeholder for login route
-router.post('/login', (req, res) => {
-  res.status(200).json({ 
-    message: 'Login endpoint placeholder',
-    data: req.body
-  });
-});
+// Login route with validation
+router.post('/login', 
+  validateRequest(userSchemas.login),
+  (req, res) => {
+    res.status(200).json({ 
+      message: 'Login endpoint placeholder',
+      data: req.body
+    });
+  }
+);
 
 // Placeholder for logout route
 router.post('/logout', (req, res) => {
