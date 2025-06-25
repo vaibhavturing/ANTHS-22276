@@ -1,7 +1,8 @@
-// src/server.js
+// src/server.js (modified)
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const { connectDB } = require('./config/database');
 require('dotenv').config();
 
 // Initialize Express application
@@ -23,9 +24,20 @@ app.get('/api/status', (req, res) => {
   res.status(200).json({ message: 'API is running' });
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Connect to database and start server
+const startServer = async () => {
+  try {
+    await connectDB();
+    
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error(`Failed to start server: ${error.message}`);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 module.exports = app;

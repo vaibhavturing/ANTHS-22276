@@ -11,7 +11,7 @@ const config = {
     url: process.env.DATABASE_URL,
     options: {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     }
   },
   
@@ -20,16 +20,26 @@ const config = {
     secret: process.env.JWT_SECRET,
     expiresIn: process.env.JWT_EXPIRES_IN || '1d'
   },
-
+  
+  // API configuration
+  api: {
+    prefix: '/api'
+  },
+  
   // Cors configuration
   cors: {
     origin: process.env.CORS_ORIGIN || '*'
-  },
-
-  // Logging configuration
-  logging: {
-    level: process.env.LOG_LEVEL || 'info'
   }
 };
+
+// Validate required environment variables
+const requiredEnvVars = ['DATABASE_URL', 'JWT_SECRET'];
+const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar]);
+
+if (missingEnvVars.length > 0) {
+  throw new Error(
+    `Missing required environment variables: ${missingEnvVars.join(', ')}`
+  );
+}
 
 module.exports = config;
